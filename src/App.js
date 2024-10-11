@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Heart from './component/Heart'; // Ensure this path is correct
+import Heart from './component/Heart'; // Make sure this path is correct
 import './App.css';
 import './index.css';
 
@@ -7,8 +7,8 @@ const App = () => {
   const [hearts, setHearts] = useState([]); // State to store heart components
   const [isMusicPlaying, setIsMusicPlaying] = useState(false); // To track if music is playing
   const [showRose, setShowRose] = useState(false); // State for rose symbol visibility
-
-  // Update the audio file path to be in the public directory
+  
+  // Correctly point to the public directory
   const backgroundMusic = '/assets/Rojalove.mp3'; 
   const audioRef = useRef(new Audio(backgroundMusic)); // Create a new Audio object
 
@@ -124,6 +124,7 @@ const App = () => {
         )}
 
         {/* Show Rose Symbol when music is playing */}
+        {/* Uncomment the next line if you have a RoseSymbol component */}
         {/* {showRose && <RoseSymbol show={showRose} onAnimationEnd={() => setShowRose(false)} />} */}
       </div>
 
