@@ -6,7 +6,7 @@ import './index.css';
 const App = () => {
   const [hearts, setHearts] = useState([]);
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
-  const audioRef = useRef(new Audio('/assets/Rojalove.mp3')); // Update this path as necessary
+  const audioRef = useRef(new Audio('/assets/Rojalove.mp3')); // Ensure this path is correct
 
   const quotes = [
     "I like you.",
@@ -99,6 +99,7 @@ const App = () => {
         </button>
       </div>
 
+      {/* Always render the audio player */}
       <audio ref={audioRef} src="/assets/Rojalove.mp3" loop controls />
     </div>
   );
