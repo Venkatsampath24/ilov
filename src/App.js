@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Heart from './component/Heart'; // Make sure this path is correct
+import Heart from './component/Heart'; // Ensure this path is correct
 import './App.css';
 import './index.css';
-import backgroundMusic from './assets/Rojalove.mp3'; // Ensure this path is correct
 
 const App = () => {
   const [hearts, setHearts] = useState([]); // State to store heart components
   const [isMusicPlaying, setIsMusicPlaying] = useState(false); // To track if music is playing
   const [showRose, setShowRose] = useState(false); // State for rose symbol visibility
+
+  // Update the audio file path to be in the public directory
+  const backgroundMusic = '/assets/Rojalove.mp3'; 
   const audioRef = useRef(new Audio(backgroundMusic)); // Create a new Audio object
 
   const quotes = [
