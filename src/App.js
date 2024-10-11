@@ -1,15 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Heart from './component/Heart';
+import Heart from './component/Heart'; // Make sure this path is correct
 import './App.css';
 import './index.css';
-import backgroundMusic from './assets/Rojalove.mp3'; // Ensure your path to the MP3 file is correct
-// import RoseSymbol from './RoseSymbol'; // Import the RoseSymbol component
+import backgroundMusic from './assets/Rojalove.mp3'; // Ensure this path is correct
 
 const App = () => {
   const [hearts, setHearts] = useState([]); // State to store heart components
   const [isMusicPlaying, setIsMusicPlaying] = useState(false); // To track if music is playing
   const [showRose, setShowRose] = useState(false); // State for rose symbol visibility
-  const audioRef = useRef(null); // Reference to audio element
+  const audioRef = useRef(new Audio(backgroundMusic)); // Create a new Audio object
 
   const quotes = [
     "I like you.",
@@ -62,16 +61,14 @@ const App = () => {
 
   // Function to handle music play on user interaction
   const playMusic = () => {
-    if (audioRef.current) {
-      audioRef.current.play()
-        .then(() => {
-          setIsMusicPlaying(true); // Update the state to reflect that music is playing
-          setShowRose(true); // Show the rose symbol
-        })
-        .catch((error) => {
-          console.error('Error playing music:', error);
-        });
-    }
+    audioRef.current.play()
+      .then(() => {
+        setIsMusicPlaying(true); // Update the state to reflect that music is playing
+        setShowRose(true); // Show the rose symbol
+      })
+      .catch((error) => {
+        console.error('Error playing music:', error);
+      });
   };
 
   useEffect(() => {
