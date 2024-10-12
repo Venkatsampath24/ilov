@@ -7,7 +7,7 @@ const App = () => {
   const [hearts, setHearts] = useState([]);
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const [isRoseVisible, setIsRoseVisible] = useState(false);
-  const audioRef = useRef(new Audio('/assets/Rojalove.mp3')); // Update the path for deployment
+  const audioRef = useRef(null); // Just a ref for the audio element
 
   const quotes = [
     "I like you.",
@@ -56,22 +56,26 @@ const App = () => {
     setHearts((prevHearts) => [...prevHearts, ...newHearts]);
   };
 
-  // Start playing the music when the rose is visible
+  // Play music function
   const playMusic = () => {
-    audioRef.current.play()
-      .then(() => {
-        setIsMusicPlaying(true);
-      })
-      .catch((error) => {
-        console.error('Error playing music:', error);
-      });
+    if (audioRef.current) {
+      audioRef.current.play()
+        .then(() => {
+          setIsMusicPlaying(true);
+        })
+        .catch((error) => {
+          console.error('Error playing music:', error);
+        });
+    }
   };
 
-  // Stop and reset the music
+  // Stop music function
   const stopMusic = () => {
-    audioRef.current.pause();
-    audioRef.current.currentTime = 0; // Reset the music to start
-    setIsMusicPlaying(false);
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0; // Reset to start
+      setIsMusicPlaying(false);
+    }
   };
 
   // Handle showing the rose and playing music
@@ -101,7 +105,7 @@ const App = () => {
 
       <div className="absolute inset-0 flex flex-col items-center justify-center z-1">
         <img
-          src="/assets/RImg.jpg" // Correct path to the image
+          src="/assets/RImg.jpg" // Ensure this path is correct for your image
           alt="Art"
           className="w-80 h-auto rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-4 border-pink-500"
         />
@@ -131,7 +135,7 @@ const App = () => {
       </div>
 
       {/* Always render the audio player */}
-      <audio ref={audioRef} src="/assets/Rojalove.mp3" loop controls style={{ display: 'none' }} />
+      <audio ref={audioRef} src="/assets/Rojalove.mp3" loop style={{ display: 'none' }} />
     </div>
   );
 };
