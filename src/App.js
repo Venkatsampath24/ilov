@@ -18,6 +18,7 @@ const App = () => {
 
   const [quote, setQuote] = useState(quotes[0]);
 
+  // Change quote every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       const randomIndex = Math.floor(Math.random() * quotes.length);
@@ -29,12 +30,12 @@ const App = () => {
 
   const generateHearts = () => {
     const newHearts = [];
-    const heartCount = Math.floor(Math.random() * 5) + 3;
+    const heartCount = Math.floor(Math.random() * 5) + 3; // Random heart count between 3 and 7
 
     for (let i = 0; i < heartCount; i++) {
-      const randomLeft = Math.random() * 100;
-      const duration = Math.random() * 3 + 2;
-      const delay = Math.random() * 3;
+      const randomLeft = Math.random() * 100; // Random horizontal position
+      const duration = Math.random() * 3 + 2; // Random fall duration
+      const delay = Math.random() * 3; // Random delay before falling
 
       newHearts.push(
         <Heart
@@ -70,7 +71,7 @@ const App = () => {
   const stopMusic = () => {
     if (audioRef.current) {
       audioRef.current.pause();
-      audioRef.current.currentTime = 0; 
+      audioRef.current.currentTime = 0; // Reset to start
       setIsMusicPlaying(false);
     }
   };
@@ -85,6 +86,7 @@ const App = () => {
     stopMusic();
   };
 
+  // Generate hearts every 300 milliseconds
   useEffect(() => {
     const interval = setInterval(generateHearts, 300);
     return () => clearInterval(interval);
@@ -129,7 +131,7 @@ const App = () => {
       </div>
 
       <audio ref={audioRef} loop>
-        <source src="/assets/music.mp3" type="audio/mp3" />
+        <source src="./assets/music.mp3" type="audio/mp3" />
         Your browser does not support the audio element.
       </audio>
     </div>
