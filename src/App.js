@@ -61,6 +61,7 @@ const App = () => {
     if (audioRef.current) {
       audioRef.current.play()
         .then(() => {
+          console.log('Music is playing');
           setIsMusicPlaying(true);
         })
         .catch((error) => {
@@ -75,6 +76,7 @@ const App = () => {
       audioRef.current.pause();
       audioRef.current.currentTime = 0; // Reset to start
       setIsMusicPlaying(false);
+      console.log('Music stopped');
     }
   };
 
@@ -135,7 +137,14 @@ const App = () => {
       </div>
 
       {/* Always render the audio player */}
-      <audio ref={audioRef} src="/assets/Rojalove.mp3" loop style={{ display: 'none' }} />
+      <audio
+        ref={audioRef}
+        src="/assets/Rojalove.mp3"
+        loop
+        style={{ display: 'none' }}
+        onLoadedData={() => console.log('Audio loaded successfully')}
+        onError={(error) => console.error('Error loading audio:', error)}
+      />
     </div>
   );
 };
