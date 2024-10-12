@@ -7,7 +7,7 @@ const App = () => {
   const [hearts, setHearts] = useState([]);
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const [isRoseVisible, setIsRoseVisible] = useState(false);
-  const audioRef = useRef(new Audio('/assets/Rojalove.mp3')); // Correct path for deployment
+  const audioRef = useRef(new Audio('/assets/Rojalove.mp3')); // Update the path for deployment
 
   const quotes = [
     "I like you.",
@@ -18,6 +18,7 @@ const App = () => {
 
   const [quote, setQuote] = useState(quotes[0]);
 
+  // Update the quote every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       const randomIndex = Math.floor(Math.random() * quotes.length);
@@ -25,7 +26,7 @@ const App = () => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [quotes]);
 
   const generateHearts = () => {
     const newHearts = [];
@@ -130,7 +131,7 @@ const App = () => {
       </div>
 
       {/* Always render the audio player */}
-      <audio ref={audioRef} src="/assets/Rojalove.mp3" loop controls />
+      <audio ref={audioRef} src="/assets/Rojalove.mp3" loop controls style={{ display: 'none' }} />
     </div>
   );
 };
