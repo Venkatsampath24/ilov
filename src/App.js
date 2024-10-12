@@ -100,7 +100,7 @@ const App = () => {
 
       <div className="absolute inset-0 flex flex-col items-center justify-center z-1">
         <img
-          src="/assets/RImg.jpg"
+          src="/assets/RImg.jpg" // Ensure the image path is correct
           alt="Art"
           className="w-80 h-auto rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-4 border-pink-500"
         />
