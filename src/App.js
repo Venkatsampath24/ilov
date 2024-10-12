@@ -139,7 +139,7 @@ const App = () => {
       {/* Always render the audio player */}
       <audio
         ref={audioRef}
-        src="/assets/Rojalove.mp3"
+        src="/Rojalove.mp3"
         loop
         style={{ display: 'none' }}
         onLoadedData={() => console.log('Audio loaded successfully')}
