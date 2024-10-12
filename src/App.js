@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import Heart from './component/Heart'; 
 import './App.css';
 import './index.css';
-import { useMemo } from 'react';
+
 const App = () => {
   const [hearts, setHearts] = useState([]);
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
@@ -129,7 +129,7 @@ const App = () => {
       </div>
 
       <audio ref={audioRef} loop>
-        <source src="/assets/Rojalove.mp3" type="audio/mp3" />
+        <source src={`${process.env.PUBLIC_URL}/assets/Rojalove.mp3`} type="audio/mp3" />
         Your browser does not support the audio element.
       </audio>
     </div>
