@@ -7,7 +7,7 @@ const App = () => {
   const [hearts, setHearts] = useState([]);
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const [isRoseVisible, setIsRoseVisible] = useState(false);
-  const audioRef = useRef(new Audio('/assets/Rojalove.mp3')); // Ensure this path is correct
+  const audioRef = useRef(new Audio('/assets/Rojalove.mp3')); // Correct path for deployment
 
   const quotes = [
     "I like you.",
@@ -100,7 +100,7 @@ const App = () => {
 
       <div className="absolute inset-0 flex flex-col items-center justify-center z-1">
         <img
-          src={require('./assets/RImg.jpg')}
+          src="/assets/RImg.jpg" // Correct path to the image
           alt="Art"
           className="w-80 h-auto rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-4 border-pink-500"
         />
@@ -123,7 +123,7 @@ const App = () => {
         {isRoseVisible && (
           <div className="modal">
             <span className="close" onClick={handleHideRose}>&times;</span>
-            <img src={require('./assets/rose-bloomed.gif.gif')} alt="Animated Rose" className="rose-gif" />
+            <img src="/assets/rose-bloomed.gif.gif" alt="Animated Rose" className="rose-gif" />
             <h1>Just like this rose blooms beautifully!</h1>
           </div>
         )}
