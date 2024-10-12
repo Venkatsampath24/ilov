@@ -6,6 +6,7 @@ import './index.css';
 const App = () => {
   const [hearts, setHearts] = useState([]);
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
+  const [isRoseVisible, setIsRoseVisible] = useState(false);
   const audioRef = useRef(new Audio('/assets/Rojalove.mp3')); // Ensure this path is correct
 
   const quotes = [
@@ -54,6 +55,7 @@ const App = () => {
     setHearts((prevHearts) => [...prevHearts, ...newHearts]);
   };
 
+  // Start playing the music when the rose is visible
   const playMusic = () => {
     audioRef.current.play()
       .then(() => {
@@ -62,6 +64,25 @@ const App = () => {
       .catch((error) => {
         console.error('Error playing music:', error);
       });
+  };
+
+  // Stop and reset the music
+  const stopMusic = () => {
+    audioRef.current.pause();
+    audioRef.current.currentTime = 0; // Reset the music to start
+    setIsMusicPlaying(false);
+  };
+
+  // Handle showing the rose and playing music
+  const handleShowRose = () => {
+    setIsRoseVisible(true);
+    playMusic();
+  };
+
+  // Handle hiding the rose and stopping the music
+  const handleHideRose = () => {
+    setIsRoseVisible(false);
+    stopMusic();
   };
 
   useEffect(() => {
@@ -93,10 +114,19 @@ const App = () => {
 
         <button
           className={`mt-4 px-6 py-3 ${isMusicPlaying ? 'bg-red-500' : 'bg-pink-500'} text-white font-semibold text-lg rounded-full hover:bg-pink-600 transition duration-300`}
-          onClick={playMusic}
+          onClick={handleShowRose}
         >
-          {isMusicPlaying ? "Music Playing!" : "Click Me to Start the Music!"}
+          {isMusicPlaying ? "Music Playing!" : "Click Me to Start the Surprise!"}
         </button>
+
+        {/* Rose modal with close button */}
+        {isRoseVisible && (
+          <div className="modal">
+            <span className="close" onClick={handleHideRose}>&times;</span>
+            <img src={require('./assets/rose-bloomed.gif.gif')} alt="Animated Rose" className="rose-gif" />
+            <h1>Just like this rose blooms beautifully!</h1>
+          </div>
+        )}
       </div>
 
       {/* Always render the audio player */}
