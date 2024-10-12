@@ -10,8 +10,8 @@ const App = () => {
   const audioRef = useRef(null); 
   
   const quotes = useMemo(() => [
-    "I like you.",
-    "You are sunshine.",
+    "I .miss something here....",
+    "You are sunshine....",
     "In your smile, I see something more beautiful than the stars.",
     "Every moment with you is a dream."
   ], []);
