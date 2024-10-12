@@ -129,7 +129,7 @@ const App = () => {
       </div>
 
       <audio ref={audioRef} loop>
-        <source src={`${process.env.PUBLIC_URL}/assets/Rojalove.mp3`} type="audio/mp3" />
+        <source src="/assets/Rojalove.mp3" type="audio/mp3" />
         Your browser does not support the audio element.
       </audio>
     </div>
